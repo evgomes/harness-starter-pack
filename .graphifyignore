@@ -1,0 +1,13 @@
+graphify-out/
+.claude/
+.agents/
+.codex/
+.cursor/
+.opencode/
+.git/
+**/node_modules/
+**/dist/
+**/build/
+**/bin/
+**/obj/
+**/package-lock.json

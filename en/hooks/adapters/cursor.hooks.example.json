@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "pwsh -NoLogo -NoProfile -File .agents/hooks/graphify-session-start.ps1 -Harness cursor"
+      }
+    ]
+  }
+}

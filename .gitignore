@@ -1,0 +1,8 @@
+# Graphify creates a local code index. Do not commit generated graphs.
+graphify-out/
+
+# Common local artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp

@@ -1,0 +1,8 @@
+---
+description: Shared engineering workflow and project agreements for this repository
+alwaysApply: true
+---
+
+Read the root `AGENTS.md` for shared instructions and consult only the relevant files in `docs/agreements/`. Treat those project decisions as authoritative over generic starter guidance.
+
+Use the optional `feature-brainstorming` skill only when the problem, constraints, or solution options need clarification. Otherwise proceed directly to the spec or proportionate task contract. Load other skills on demand. Verify conclusions against source and tests; do not make speculative review findings.
