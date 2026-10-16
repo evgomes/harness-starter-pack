@@ -4,6 +4,8 @@ Reusable project guidance for AI-assisted software engineering. The content is o
 
 ## Quick start
 
+To install the English guidance into a new or existing project from a clone of this repository, run the [cross-platform installer](../scripts/README.md). The manual steps below remain available when you want to choose and copy files yourself.
+
 1. Read [AGENTS.md](AGENTS.md) and the five [agreement starters](docs/agreements/README.md).
 2. Copy or adapt the selected harness adapter from `harnesses/` into the target repository. Merge instructions with existing project files; do not overwrite local agreements blindly.
 3. Start from the [spec template](docs/templates/spec.md) for work that needs an explicit contract. The [template index](docs/templates/README.md) includes verification, threat-model, risk-exception, hook-contract, and UI design exploration templates. Use the [feature brainstorming skill](skills/feature-brainstorming/SKILL.md) or [UI design exploration skill](skills/ui-design-exploration/SKILL.md) only when clarification or exploration would help; both are optional.
