@@ -13,6 +13,8 @@ Clone this repository, then choose the common guidance, a harness adapter, and a
 
 The pack is also designed to be referenced directly by an agent. Start with `en/AGENTS.md` and load task-specific skills only when they apply.
 
+To apply the English assets interactively to a new or existing project, use the [cross-platform installer](scripts/README.md). It uses Python's standard library and previews changes with `--dry-run`.
+
 For the rationale and further reading behind the workflows and stack profiles, see [References and rationale](REFERENCES.md).
 
 For agent visual checks in web apps, see the [browser testing guide](en/guides/browser-testing.md) and optional [browser visual validation skill](en/skills/browser-visual-validation/SKILL.md).
