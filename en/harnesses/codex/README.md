@@ -5,7 +5,7 @@ Codex recognizes repository `AGENTS.md` files as project instructions. Use the s
 ## Setup
 
 1. Copy or adapt `en/AGENTS.md` to the target repository root.
-2. Copy the selected agreement starters to `docs/agreements/` and complete them with project facts.
+2. Copy all five common agreements to `docs/agreements/`. Complete the architecture, dependency, conventions, and quality/security agreements with verified project facts; retain the reusable workflow agreement and adapt it only to documented project-specific process requirements. Mark non-applicable sections with a reason instead of omitting agreement files.
 3. Copy each selected skill directory into `.agents/skills/`.
 4. If instructions are split by directory, add scoped `AGENTS.md` files only where local rules materially differ.
 

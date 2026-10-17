@@ -1,11 +1,11 @@
 # Project agreements
 
-Copy these five files into a target project's `docs/agreements/` folder and replace prompts with facts verified in that repository. Keep all five files present, even if a section is marked “not applicable” with a reason.
+Copy all five agreements into a target project's `docs/agreements/` folder. Complete the architecture, dependency, conventions, and quality/security agreements with verified project facts and decisions. The workflow agreement is the reusable default process; adapt it only when the target project's documented workflow requires it. Keep all five files present, marking a section “not applicable” with a reason when needed.
 
 1. [Architecture](architecture.md) — system boundaries, architecture contract, and technology stack.
 2. [Dependencies](dependencies.md) — packages, licenses, maintenance, vulnerabilities, and review cadence.
 3. [Conventions](conventions.md) — SOLID, Clean Code, and project-specific engineering decisions.
-4. [Workflow](workflow.md) — optional exploration, specifications, slices, reviews, handoffs, and delivery.
+4. [Workflow](workflow.md) — reusable process for understanding project agreements, specifications, proof slices, sequential delivery, verification, review, and handoffs.
 5. [Quality and security](quality-and-security.md) — project validation catalog, thresholds, finding policy, and risk handling.
 
-These are starter documents, not evidence about a consuming project. Verify and fill them before treating them as authoritative.
+The architecture, dependency, conventions, and quality/security files are starters, not evidence about a consuming project. Verify and fill them before treating them as authoritative. The workflow file is a reusable default process; adapt it only to the consuming project's documented decisions.

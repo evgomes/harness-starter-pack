@@ -9,7 +9,20 @@ A collection of reusable instructions, skills, templates, and checks for AI-assi
 
 ## Getting started
 
-Clone this repository, then choose the common guidance, a harness adapter, and a stack profile from `en/`. Review the project agreement templates and replace prompts and placeholders with the target project's actual decisions. Do not copy a template unchanged as if it described a project that has not been inspected.
+### Clone and install
+
+Clone the repository to a location where you can keep it available as a source for the starter assets:
+
+```sh
+git clone <repository-url>
+cd harness-starter-pack
+```
+
+Run the Python installation script from the repository root, then review its choices and the files it adds to the target project. The script's path and command are documented in the [English package guide](en/README.md).
+
+### Use the pack
+
+Choose the common guidance, the adapter for your harness, and any applicable stack profile from `en/`. Copy all five common agreements to the target project's `docs/agreements/`; fill the architecture, dependency, conventions, and quality/security agreements with verified project decisions, and adapt the reusable workflow agreement only for documented project-specific needs. Select additional templates and skills as needed. Merge instructions with existing project files instead of overwriting established rules. Do not copy project agreement prompts unchanged as if they described a repository that has not been inspected.
 
 The pack is also designed to be referenced directly by an agent. Start with `en/AGENTS.md` and load task-specific skills only when they apply.
 

@@ -2,7 +2,7 @@
 
 This guide links to material that informs the starter pack's workflows and stack profiles. The links are references for understanding and evaluating practices; they do not make the pack dependent on a vendor, framework, product, architecture, or workflow tool. Prefer the target repository's agreements and current official documentation when they differ.
 
-**Links checked:** 2026-10-16. Product, model, API, and framework guidance can change; check the source's current version and applicability before relying on it.
+**Links checked:** 2026-10-17. Product, model, API, and framework guidance can change; check the source's current version and applicability before relying on it.
 
 ## How these references inform the starter pack
 
@@ -11,7 +11,7 @@ This guide links to material that informs the starter pack's workflows and stack
 | Specs and acceptance criteria | Agree on a reviewable description of user need, scope, context, decisions, evidence, and ordered work before implementation; clarify ambiguity and check consistency rather than treating the first draft as authoritative. |
 | Handoffs and context | Persist decisions, progress, evidence, and next action in a concise, inspectable artifact so a new session can load the relevant state without replaying the entire history. A handoff is explicit project memory; it is not prompt cache. |
 | Slices and checklists | Break work into ordered, evidence-bearing items. Test the changed behavior at the smallest useful scope during implementation, then run required broad checks at feature completion. A checklist is a progress record, not proof by itself. |
-| Subagents and parallel work | Parallelize only bounded independent work where the speed or perspective gain exceeds coordination and validation cost. The starter pack does not make subagents or parallel execution a default requirement. |
+| Subagents and parallel work | The starter pack permits parallel subagents only when the developer explicitly asks; if delegated, keep work bounded and account for coordination and verification cost. |
 | .NET and React | Use official platform guidance to inform architecture and coding patterns, then verify the target project's versions, structure, and conventions. Examples are alternatives to evaluate, not mandatory blueprints. |
 | Prompt caching | Caching can reuse computation for repeated prompt content. It does not remove tokens from context or act as semantic memory. Cache behavior, supported controls, retention, pricing, and cache-hit conditions are provider-specific. |
 | Model selection | Select by task difficulty, risk, context, quality bar, latency, and cost; validate the choice on representative work. Avoid fixed model rankings and price tables in durable project guidance because model lineups and terms change. |
@@ -55,6 +55,15 @@ The [ASP.NET Core profile](en/stacks/aspnet-core/README.md) and its [architectur
 - [W3C: Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/) — normative accessibility success criteria; automated checks are not a substitute for evaluating applicable criteria and user flows.
 
 The [React profile](en/stacks/react/README.md), [UI exploration template](en/docs/templates/ui-design-exploration.md), and [React design templates](en/stacks/react/docs/templates/README.md) encourage existing design-system reuse, explicit UI states, mock data, theme/token evaluation, and accessibility evidence.
+
+## SOLID, code quality, and engineering practices
+
+- [Clean Code: A Handbook of Agile Software Craftsmanship, 2nd edition](https://www.pearson.com/en-us/subject-catalog/p/clean-code-a-handbook-of-agile-software-craftsmanship-2nd-edition/P200000013239/9780135398579) by Robert C. Martin — publisher reference for readable code, naming, functions, testing, design heuristics, and the SOLID principles. Treat its recommendations as design tools to evaluate in context, not mandatory rules.
+- [Google Engineering Practices: Code Review](https://google.github.io/eng-practices/review/) — Google's published review guidance, including design, behavior, complexity, tests, naming, style, and documentation. It is a useful example, not a required process for every team.
+- [Microsoft Framework Design Guidelines](https://learn.microsoft.com/dotnet/standard/design-guidelines/) — API and library design guidance for .NET. Its scope is .NET libraries; the page notes that some material may be out of date, so verify relevant recommendations against current framework guidance.
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/) — maintained, topic-specific application security guidance. Select the sheets that match the product's risks; do not treat a generic checklist as a security or compliance determination.
+
+The common [conventions agreement](en/docs/agreements/conventions.md) uses SOLID and Clean Code as prompts for clarity and testability while explicitly discouraging speculative abstractions. The [quality and security agreement](en/docs/agreements/quality-and-security.md) and [security review skill](en/skills/security-review/SKILL.md) tie security practices to the target project's risks and evidence.
 
 ## Browser validation
 

@@ -4,11 +4,23 @@ Reusable project guidance for AI-assisted software engineering. The content is o
 
 ## Quick start
 
-1. Read [AGENTS.md](AGENTS.md) and the five [agreement starters](docs/agreements/README.md).
+1. Read [AGENTS.md](AGENTS.md) and the [agreement catalog](docs/agreements/README.md); copy all five agreements into the target project's `docs/agreements/` folder as described there.
 2. Copy or adapt the selected harness adapter from `harnesses/` into the target repository. Merge instructions with existing project files; do not overwrite local agreements blindly.
 3. Start from the [spec template](docs/templates/spec.md) for work that needs an explicit contract. The [template index](docs/templates/README.md) includes verification, threat-model, risk-exception, hook-contract, and UI design exploration templates. Use the [feature brainstorming skill](skills/feature-brainstorming/SKILL.md) or [UI design exploration skill](skills/ui-design-exploration/SKILL.md) only when clarification or exploration would help; both are optional.
 4. Select the [ASP.NET Core](stacks/aspnet-core/README.md) and/or [React](stacks/react/README.md) profile(s), then tailor them to the actual repository.
 5. Load relevant skills on demand. Start with [Graphify setup](skills/graphify-setup/SKILL.md) for Graphify installation, [dependency review](skills/dependency-review/SKILL.md) for package maintenance, and [shift-left review](skills/shift-left-code-review/SKILL.md) before a change is considered ready. Use [browser visual validation](skills/browser-visual-validation/SKILL.md) for browser-visible UI changes, [threat modeling](skills/threat-modeling/SKILL.md) when a change affects meaningful security or privacy boundaries, and [hook authoring](skills/hook-authoring/SKILL.md) when adding a project-specific lifecycle check.
+
+## Clone and install
+
+Clone this repository, change into its directory, and run the Python installer from the repository root:
+
+```sh
+git clone <repository-url>
+cd harness-starter-pack
+python <installer-script>
+```
+
+Use the installer's help/output to select the target repository, harness adapter, and optional stack profile or skills. Review the proposed destination and files before accepting installation, then inspect the resulting changes and tailor the agreements to verified project facts. The installer copies starter assets; it does not decide the target project's architecture or conventions for you.
 
 ## Package map
 
