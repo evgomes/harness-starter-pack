@@ -4,7 +4,7 @@ Frontend guidance for projects built with React. These recommendations are a sta
 
 ## Use with other profiles
 
-Select this profile for a React application or user interface. Add the [ASP.NET Core profile](../aspnet-core/README.md) independently when that backend is also present. Keep API/UI contracts, authentication boundaries, and cross-stack decisions in the project's common `docs/agreements/architecture.md`.
+Select this profile for a React application or user interface. If the same repository also contains an ASP.NET Core backend and you want integrated architecture, conventions, and spec guidance, select the combined ASP.NET Core + React profile instead. Keep API/UI contracts, authentication boundaries, and cross-stack decisions in the project's common `docs/agreements/architecture.md`.
 
 ## Architecture and conventions
 

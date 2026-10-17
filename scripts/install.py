@@ -274,6 +274,7 @@ class PlannedFile:
 STACKS = {
     "aspnet-core": "ASP.NET Core",
     "react": "React",
+    "aspnet-core-react": "ASP.NET Core + React (same repository)",
 }
 
 HARNESSES = {
@@ -296,6 +297,8 @@ SKILLS = {
     "threat-modeling": "Threat modeling",
     "ui-design-exploration": "UI design exploration",
 }
+
+DEFAULT_SKILLS = ["graphify", "graphify-setup"]
 
 SKILL_DEPENDENCIES = {
     "browser-visual-validation": {"accessibility-review"},
@@ -463,6 +466,16 @@ def resolve_skill_selection(selected: Iterable[str]) -> list[str]:
     return [name for name in SKILLS if name in resolved]
 
 
+def resolve_stack_selection(selected: Iterable[str]) -> list[str]:
+    resolved: set[str] = set()
+    for stack in selected:
+        if stack == "aspnet-core-react":
+            resolved.update(("aspnet-core", "react", "aspnet-core-react"))
+        else:
+            resolved.add(stack)
+    return [name for name in STACKS if name in resolved]
+
+
 def build_plan(
     stacks: list[str], harnesses: list[str], selected_skills: list[str]
 ) -> tuple[list[PlannedFile], list[str]]:
@@ -476,7 +489,7 @@ def build_plan(
         PlannedFile(ENGLISH_ROOT / "AGENTS.md", Path("AGENTS.md"), "Shared agent instructions")
     )
 
-    for stack in stacks:
+    for stack in resolve_stack_selection(stacks):
         add_directory(plan, f"stacks/{stack}", f"stacks/{stack}", STACKS[stack] + " profile")
 
     for skill in resolve_skill_selection(selected_skills):
@@ -726,7 +739,7 @@ def main(argv: list[str] | None = None) -> int:
         target: Path | None = None
         stacks: list[str] = []
         harnesses: list[str] = []
-        skills: list[str] = []
+        skills = DEFAULT_SKILLS.copy()
         step = 0
         prepared: list[tuple[PlannedFile, Path]] = []
         while True:
@@ -781,7 +794,7 @@ def main(argv: list[str] | None = None) -> int:
                     step = 5
             elif step == 5:
                 selected_skills = choose_many(
-                    console, "Choose optional skills", SKILLS, 5, skills
+                    console, "Choose skills (Graphify and setup selected by default)", SKILLS, 5, skills
                 )
                 if selected_skills is None:
                     step = 4

@@ -18,10 +18,11 @@ To review the planned files without creating the destination or writing anything
 
 ## What gets installed
 
-- Shared `AGENTS.md`, agreement starters, templates, hook guidance/examples, and guides.
+- Shared `AGENTS.md`, all five agreements (`architecture.md`, `dependencies.md`, `conventions.md`, `workflow.md`, and `quality-and-security.md`), common templates, hook guidance/examples, and guides are always copied.
 - The portable skill library under `skills/`. This is a reference catalog; it does not activate every skill in a harness.
-- Selected stack profiles under `stacks/` and selected harness setup notes under `harnesses/`.
-- Only the selected optional skills are copied into selected harness discovery folders (`.agents/skills/` and/or `.claude/skills/`). A skill may bring along another skill it links to, so the copied references remain complete.
+- Selected stack profiles under `stacks/` and selected harness setup notes under `harnesses/`. For a repository containing both technologies, select the combined ASP.NET Core + React profile; it includes the integrated guidance plus both individual profiles' technology-specific guidance. You can select individual profiles separately when you need only one stack. The installer copies guidance and templates, not application code or framework dependencies.
+- `graphify` and `graphify-setup` are selected by default in the skill menu. You may deselect them. Other skills are opt-in, though supporting skills may be added automatically when a selected skill requires them.
+- Selected skills are copied into the discovery folders of selected harnesses (`.agents/skills/` for Codex, Cursor, and OpenCode; `.claude/skills/` for Claude Code). If you select no harness, skills remain in the portable `skills/` reference library and are not activated in a harness. A skill may bring along another skill it links to, so copied references remain complete.
 - Cursor rules and OpenCode configuration when those harnesses are selected. Claude Code gets a root `CLAUDE.md` entry point when selected. Codex uses the shared root `AGENTS.md`.
 
 After installation, review the root instructions and tailor `docs/agreements/` to the actual project. If an existing file collides, the wizard skips it by default. It offers backup-and-replace for that individual file; choosing that option stores the original under `.harness-starter-backups/<timestamp>/` before copying the starter file. Nothing is deleted by the installer.
@@ -32,7 +33,7 @@ The wizard does not install harnesses or tools, download remote code, alter glob
 
 - The first installer version supports the complete English package only. Portuguese (Brazil) content is not presented as available until that package is ready.
 - For projects using more than one harness, select each harness. Shared skill files may be copied into more than one harness-specific discovery folder.
-- The root portable `skills/` directory is present for reference. An unselected skill is not made discoverable as an active harness skill.
+- The root portable `skills/` directory contains the reference library. A preselected skill becomes discoverable only when at least one harness that supports project skills is selected.
 - The console colors adapt to terminal support, `NO_COLOR`, and `--no-color`; color is decorative and does not encode information by itself.
 
 ## Manual alternative

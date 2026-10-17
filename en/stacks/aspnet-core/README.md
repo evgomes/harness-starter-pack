@@ -4,7 +4,7 @@ Backend guidance for projects built with ASP.NET Core. These recommendations are
 
 ## Use with other profiles
 
-Select this profile for an ASP.NET Core backend. Add the [React profile](../react/README.md) independently when the project also uses React. Keep API/UI contracts and cross-stack decisions in the project's common `docs/agreements/architecture.md`.
+Select this profile for an ASP.NET Core backend. If the same repository also contains a React frontend and you want integrated architecture, conventions, and spec guidance, select the combined ASP.NET Core + React profile instead. Keep API/UI contracts and cross-stack decisions in the project's common `docs/agreements/architecture.md`.
 
 ## Architecture and conventions
 

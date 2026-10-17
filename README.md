@@ -1,6 +1,6 @@
 # Harness Starter Pack
 
-A collection of reusable instructions, skills, templates, and checks for AI-assisted software engineering. The initial package is in English and includes separate ASP.NET Core and React profiles that can be combined; additional stacks and a Brazilian Portuguese package are planned.
+A collection of reusable instructions, skills, templates, and checks for AI-assisted software engineering. The initial package is in English and includes ASP.NET Core and React profiles, separately and as a combined same-repository profile; additional stacks and a Brazilian Portuguese package are planned.
 
 ## Packages
 
@@ -28,6 +28,8 @@ Choose the common guidance, the adapter for your harness, and any applicable sta
 The pack is also designed to be referenced directly by an agent. Start with `en/AGENTS.md` and load task-specific skills only when they apply.
 
 To apply the English assets interactively to a new or existing project, use the [cross-platform installer](scripts/README.md). It uses Python's standard library and previews changes with `--dry-run`.
+
+The installer always includes all five common agreements, shared templates, hook guidance/examples, guides, and the portable skill reference library. Select the combined ASP.NET Core + React profile for a co-located full-stack repository; it includes integrated guidance and both individual profiles' stack-specific guidance. You can select the profiles separately when you need just one stack. `graphify` and `graphify-setup` are preselected as skills; choose a harness to make selected skills discoverable to that agent. The installer does not install the Graphify tool itself.
 
 For the rationale and further reading behind the workflows and stack profiles, see [References and rationale](REFERENCES.md).
 

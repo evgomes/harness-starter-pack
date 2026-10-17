@@ -9,7 +9,7 @@ To install the English guidance into a new or existing project from a clone of t
 1. Read [AGENTS.md](AGENTS.md) and the [agreement catalog](docs/agreements/README.md); the installer copies all five agreements into the target project's `docs/agreements/` folder.
 2. Copy or adapt the selected harness adapter from `harnesses/` into the target repository. Merge instructions with existing project files; do not overwrite local agreements blindly.
 3. Start from the [spec template](docs/templates/spec.md) for work that needs an explicit contract. The [template index](docs/templates/README.md) includes verification, threat-model, risk-exception, hook-contract, and UI design exploration templates. Use the [feature brainstorming skill](skills/feature-brainstorming/SKILL.md) or [UI design exploration skill](skills/ui-design-exploration/SKILL.md) only when clarification or exploration would help; both are optional.
-4. Select the [ASP.NET Core](stacks/aspnet-core/README.md) and/or [React](stacks/react/README.md) profile(s), then tailor them to the actual repository.
+4. Select the [ASP.NET Core](stacks/aspnet-core/README.md) and/or [React](stacks/react/README.md) profile(s), or select the [combined ASP.NET Core + React profile](stacks/aspnet-core-react/README.md) when both live in the same repository. The combined installer option also includes both individual profiles' technology-specific guidance. Tailor the selected guidance to the actual repository.
 5. Load relevant skills on demand. Start with [Graphify setup](skills/graphify-setup/SKILL.md) for Graphify installation, [dependency review](skills/dependency-review/SKILL.md) for package maintenance, and [shift-left review](skills/shift-left-code-review/SKILL.md) before a change is considered ready. Use [browser visual validation](skills/browser-visual-validation/SKILL.md) for browser-visible UI changes, [threat modeling](skills/threat-modeling/SKILL.md) when a change affects meaningful security or privacy boundaries, and [hook authoring](skills/hook-authoring/SKILL.md) when adding a project-specific lifecycle check.
 
 ## Clone and install
@@ -22,7 +22,7 @@ cd harness-starter-pack
 py -3 scripts/install.py
 ```
 
-On macOS or Linux, run `python3 scripts/install.py`; on Windows without the `py` launcher, run `python scripts/install.py`. The wizard can add the English guidance to an existing repository or create a new project folder. Review the preview and selected assets before applying them, then inspect the resulting changes and complete the project agreements with verified facts. Use `--dry-run` to preview without writing. The [installer guide](../scripts/README.md) describes choices, keyboard controls, collision handling, and limitations.
+On macOS or Linux, run `python3 scripts/install.py`; on Windows without the `py` launcher, run `python scripts/install.py`. The wizard can add the English guidance to an existing repository or create a new project folder. It always copies all five agreements and the common template library. For a repository with both ASP.NET Core and React, select the combined profile; it includes its integrated guidance and both individual profiles. `graphify` and `graphify-setup` are preselected in the skills step; other skills are optional. Select at least one harness to copy the selected skills into its discovery folder. Review the preview and selected assets before applying them, then inspect the resulting changes and complete the project agreements with verified facts. Use `--dry-run` to preview without writing. The [installer guide](../scripts/README.md) describes choices, keyboard controls, collision handling, and limitations.
 
 ## Package map
 
@@ -34,7 +34,7 @@ On macOS or Linux, run `python3 scripts/install.py`; on Windows without the `py`
 | Optional skills | `skills/` | Graphify, brainstorming, UI design exploration, browser validation, dependency, security, threat modeling, hook authoring, accessibility, review workflows |
 | Hook guidance | `hooks/` | Safe deterministic lifecycle checks, optional Graphify check, and vendor-neutral hook authoring |
 | Harness adapters | `harnesses/` | Codex, Claude Code, Cursor, OpenCode |
-| Stack profiles | `stacks/` | Independent technology profiles, starting with ASP.NET Core and React |
+| Stack profiles | `stacks/` | ASP.NET Core and React profiles, available separately or as a combined bundle for one repository |
 
 ## Skills and harnesses
 

@@ -6,8 +6,9 @@ Stack profiles add technology-specific architecture, conventions, and verificati
 
 - [ASP.NET Core](aspnet-core/README.md)
 - [React](react/README.md)
+- [ASP.NET Core + React in one repository](aspnet-core-react/README.md)
 
-Select profiles independently. For a full-stack ASP.NET Core + React application, apply both and record their API contract and integration decisions in the project's shared agreements.
+Use the combined profile when an ASP.NET Core backend and React frontend live in the same repository and need shared architecture, conventions, and end-to-end spec guidance. Selecting it in the installer also includes both individual profiles for their technology-specific guidance. Use individual profiles when you want only one stack's guidance.
 
 ## Adding a profile
 
