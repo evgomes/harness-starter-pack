@@ -11,20 +11,23 @@ A collection of reusable instructions, skills, templates, and checks for AI-assi
 
 ### Clone and install
 
-Clone the repository to a location where you can keep it available as a source for the starter assets:
+Clone the repository, change into its directory, and run the Python installer from the repository root (Python 3.9+):
 
-```sh
-git clone <repository-url>
+```powershell
+git clone https://github.com/evgomes/harness-starter-pack.git
 cd harness-starter-pack
+py -3 scripts/install.py
 ```
 
-Run the Python installation script from the repository root, then review its choices and the files it adds to the target project. The script's path and command are documented in the [English package guide](en/README.md).
+On macOS or Linux, run `python3 scripts/install.py`; on Windows without the `py` launcher, run `python scripts/install.py`. Review the preview and choices before applying the files. See the [installer guide](scripts/README.md) for interaction, options, and collision handling.
 
 ### Use the pack
 
 Choose the common guidance, the adapter for your harness, and any applicable stack profile from `en/`. Copy all five common agreements to the target project's `docs/agreements/`; fill the architecture, dependency, conventions, and quality/security agreements with verified project decisions, and adapt the reusable workflow agreement only for documented project-specific needs. Select additional templates and skills as needed. Merge instructions with existing project files instead of overwriting established rules. Do not copy project agreement prompts unchanged as if they described a repository that has not been inspected.
 
 The pack is also designed to be referenced directly by an agent. Start with `en/AGENTS.md` and load task-specific skills only when they apply.
+
+To apply the English assets interactively to a new or existing project, use the [cross-platform installer](scripts/README.md). It uses Python's standard library and previews changes with `--dry-run`.
 
 For the rationale and further reading behind the workflows and stack profiles, see [References and rationale](REFERENCES.md).
 

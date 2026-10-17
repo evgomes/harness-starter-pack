@@ -4,7 +4,9 @@ Reusable project guidance for AI-assisted software engineering. The content is o
 
 ## Quick start
 
-1. Read [AGENTS.md](AGENTS.md) and the [agreement catalog](docs/agreements/README.md); copy all five agreements into the target project's `docs/agreements/` folder as described there.
+To install the English guidance into a new or existing project from a clone of this repository, run the [cross-platform installer](../scripts/README.md). The manual steps below remain available when you want to choose and copy files yourself.
+
+1. Read [AGENTS.md](AGENTS.md) and the [agreement catalog](docs/agreements/README.md); the installer copies all five agreements into the target project's `docs/agreements/` folder.
 2. Copy or adapt the selected harness adapter from `harnesses/` into the target repository. Merge instructions with existing project files; do not overwrite local agreements blindly.
 3. Start from the [spec template](docs/templates/spec.md) for work that needs an explicit contract. The [template index](docs/templates/README.md) includes verification, threat-model, risk-exception, hook-contract, and UI design exploration templates. Use the [feature brainstorming skill](skills/feature-brainstorming/SKILL.md) or [UI design exploration skill](skills/ui-design-exploration/SKILL.md) only when clarification or exploration would help; both are optional.
 4. Select the [ASP.NET Core](stacks/aspnet-core/README.md) and/or [React](stacks/react/README.md) profile(s), then tailor them to the actual repository.
@@ -12,15 +14,15 @@ Reusable project guidance for AI-assisted software engineering. The content is o
 
 ## Clone and install
 
-Clone this repository, change into its directory, and run the Python installer from the repository root:
+Clone this repository, change into its directory, and run the Python installer from the repository root. It requires Python 3.9+ and uses only the standard library:
 
-```sh
-git clone <repository-url>
+```powershell
+git clone https://github.com/evgomes/harness-starter-pack.git
 cd harness-starter-pack
-python <installer-script>
+py -3 scripts/install.py
 ```
 
-Use the installer's help/output to select the target repository, harness adapter, and optional stack profile or skills. Review the proposed destination and files before accepting installation, then inspect the resulting changes and tailor the agreements to verified project facts. The installer copies starter assets; it does not decide the target project's architecture or conventions for you.
+On macOS or Linux, run `python3 scripts/install.py`; on Windows without the `py` launcher, run `python scripts/install.py`. The wizard can add the English guidance to an existing repository or create a new project folder. Review the preview and selected assets before applying them, then inspect the resulting changes and complete the project agreements with verified facts. Use `--dry-run` to preview without writing. The [installer guide](../scripts/README.md) describes choices, keyboard controls, collision handling, and limitations.
 
 ## Package map
 
