@@ -1,17 +1,33 @@
-# Skill catalog
+# Skills catalog
 
-Skills are optional, focused workflows. Load one when the task matches its description; do not preload every skill for every change.
+Skills are optional, task-scoped workflows that an agent loads when relevant. They are not all-on instructions, tools, or guarantees of review quality. The installer copies the portable catalog as reference material; it preselects `graphify` and `graphify-setup`, and copies selected skill folders into the discovery location of each compatible harness selected in the installer.
 
-| Skill | Use when |
+## Explore and understand
+
+| Skill | What it does |
 |---|---|
-| [feature-brainstorming](feature-brainstorming/SKILL.md) | The problem, constraints, or solution alternatives need clarification. Optional; skip when ready to spec or code. |
-| [ui-design-exploration](ui-design-exploration/SKILL.md) | The engineer wants to research and prototype screen/design options before writing a feature spec. Optional. |
-| [graphify](graphify/SKILL.md) | Navigating unfamiliar code relationships or impact paths in a repository with a fresh Graphify index. |
-| [graphify-setup](graphify-setup/SKILL.md) | Installing, refreshing, upgrading, or repairing Graphify. |
-| [dependency-review](dependency-review/SKILL.md) | Reviewing packages, licenses, advisories, updates, or a scheduled audit report. |
-| [shift-left-code-review](shift-left-code-review/SKILL.md) | One adversarial review of a complete spec-driven feature and final diff. |
-| [security-review](security-review/SKILL.md) | Reviewing design/code for threat-informed security issues. |
-| [threat-modeling](threat-modeling/SKILL.md) | Creating a scoped threat model and connecting scenarios to mitigations and verification. |
-| [hook-authoring](hook-authoring/SKILL.md) | Designing, implementing, and validating optional repository or harness hooks. |
-| [accessibility-review](accessibility-review/SKILL.md) | Reviewing UI changes against the project's accessibility target. |
-| [browser-visual-validation](browser-visual-validation/SKILL.md) | Inspecting rendered web UI changes in the available harness browser or project browser setup. |
+| [feature-brainstorming](feature-brainstorming/SKILL.md) | Clarifies an uncertain problem, constraints, and solution alternatives before a spec. Skip when the desired change is already clear. |
+| [ui-design-exploration](ui-design-exploration/SKILL.md) | Researches and prototypes UI options before implementation when design direction is uncertain. |
+| [graphify](graphify/SKILL.md) | Uses a fresh Graphify repository graph to navigate code relationships and impact paths. Graph findings should be confirmed against source. |
+| [graphify-setup](graphify-setup/SKILL.md) | Ensures the Graphify CLI is installed in the developer's tool environment, then configures, refreshes, upgrades, or repairs the repository graph. |
+
+## Review quality and risk
+
+| Skill | What it does |
+|---|---|
+| [dependency-review](dependency-review/SKILL.md) | Reviews package inventory, licenses, advisories, updates, and scheduled audit findings. |
+| [shift-left-code-review](shift-left-code-review/SKILL.md) | Performs a focused adversarial review of a complete spec-driven change and its final diff. |
+| [security-review](security-review/SKILL.md) | Reviews a design or code change for threat-informed security issues and evidence. |
+| [threat-modeling](threat-modeling/SKILL.md) | Creates a scoped threat model and connects concrete abuse scenarios to mitigations and verification. |
+| [accessibility-review](accessibility-review/SKILL.md) | Checks UI changes against the project's accessibility target and relevant user flows. |
+
+## Build and validate interaction
+
+| Skill | What it does |
+|---|---|
+| [browser-visual-validation](browser-visual-validation/SKILL.md) | Inspects rendered web UI behavior, console/network output, and visual states in the available browser setup. |
+| [hook-authoring](hook-authoring/SKILL.md) | Designs and validates optional repository or harness hooks, favoring deterministic, local, non-destructive checks. |
+
+## Selection and dependencies
+
+Graphify and Graphify setup are preselected in the installer, but can be deselected. When Graphify setup is selected, completing that workflow requires ensuring the CLI is installed on the developer's machine; the starter-pack installer itself does not install it. Skills are activated only if at least one supported harness is selected; otherwise they remain available in the portable `skills/` reference library. The installer may add supporting skills automatically: browser visual validation includes accessibility review, while UI design exploration includes accessibility review and browser visual validation. The exact harness discovery paths are described in [harnesses](../harnesses/README.md) and [installer guide](../../scripts/README.md).

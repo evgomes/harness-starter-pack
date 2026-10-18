@@ -1,6 +1,9 @@
 ---
 name: graphify-setup
 description: Install and wire up the Graphify code graph in a repository - installs the graphify CLI (package graphifyy), ignores graphify-out/, writes a .graphifyignore that matches the refresh script, installs the graphify navigation skill for the chosen harnesses, records the tool in docs/agreements/dependencies.md, builds the first index and proves it with a query. Use when a repository has no code graph yet, when the graphify command is missing on a machine, when a teammate clones a repository that uses the graph, when upgrading Graphify, when removing it, or when the refresh script keeps reporting the index as stale. Not for querying the graph - that is the graphify skill.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Setting up Graphify in a repository
@@ -53,9 +56,9 @@ Also look for leftovers of Graphify's own integrations: a `## graphify` section 
 Then do only the steps that are missing. On a machine where everything is already in place except the
 CLI (a fresh clone), steps 1 and 5 are the whole job.
 
-## 1. Install the CLI
+## 1. Ensure the CLI is installed on the developer's machine
 
-Installing a tool on the user's machine is their call: say what you will run and wait for a yes.
+The Graphify CLI is a required outcome of this setup workflow. If it is missing, install it in the developer's isolated tool environment; do not stop after recommending a command or treat installation as optional. If it is already installed, verify and record its version rather than reinstalling it.
 
 ```bash
 uv tool install graphifyy        # preferred: isolated, upgradable, puts `graphify` on the PATH
@@ -64,6 +67,8 @@ pipx install graphifyy           # alternative when uv is not available
 
 - The package is **`graphifyy`, with two `y`s**; the command is `graphify`. Do not "correct" the name to
   one `y` — that is not this project.
+- Prefer `uv tool install graphifyy`; use `pipx install graphifyy` if `uv` is not available. Complete the
+  installation before proceeding with project configuration and the initial index.
 - Never `pip install` it into the project's own virtual environment or add it to the project's
   dependency files. It is a developer tool, like a linter installed globally, not something the
   application ships.

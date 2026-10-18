@@ -1,6 +1,9 @@
 ---
 name: shift-left-code-review
 description: Perform one adversarial review at the end of a complete spec-driven feature against its spec, project agreements, SOLID/Clean Code, security, accessibility, dependencies, and evidence. Report only concrete actionable findings; do not edit the change unless asked.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Shift-left code review

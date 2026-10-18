@@ -1,6 +1,9 @@
 ---
 name: accessibility-review
 description: Review UI changes against the project's accessibility agreement and applicable WCAG success criteria. Combine source review and approved automated checks with keyboard and assistive-technology evidence; do not claim conformance from automation alone.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Accessibility review

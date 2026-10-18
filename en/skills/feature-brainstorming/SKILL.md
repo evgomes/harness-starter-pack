@@ -1,6 +1,9 @@
 ---
 name: feature-brainstorming
 description: Optional pre-spec exploration for software changes whose problem, constraints, or solution options need clarification. Produces a concise exploration note and handoff for spec creation; does not implement code or make product decisions.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Feature brainstorming

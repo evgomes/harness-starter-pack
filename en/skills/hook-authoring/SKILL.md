@@ -1,6 +1,9 @@
 ---
 name: hook-authoring
 description: Design, implement, or review an optional repository or harness lifecycle hook with explicit behavior, safe defaults, cross-platform support, and verifiable failure modes. Use when a project asks to add or change a hook.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Hook authoring

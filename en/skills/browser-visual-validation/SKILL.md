@@ -1,6 +1,9 @@
 ---
 name: browser-visual-validation
 description: Inspect a running web application in a browser after UI changes. Use the repository's existing browser setup or a supported harness integration, and report visual, interaction, console, and accessibility evidence.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Browser visual validation

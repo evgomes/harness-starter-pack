@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh",
+            "args": [
+              "-NoLogo",
+              "-NoProfile",
+              "-File",
+              "${CLAUDE_PROJECT_DIR}/.agents/hooks/graphify-session-start.ps1",
+              "-Harness",
+              "claude"
+            ],
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

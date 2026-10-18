@@ -13,6 +13,7 @@ Copy the relevant template into the project documentation and tailor it to the w
 | [UI design exploration](ui-design-exploration.md) | Research design alternatives, prototype with mock data, and record the accepted direction before spec creation. |
 | [Handoff](handoff.md) | Transfer context and outstanding work when a standard flow does not cover it. |
 | [Code review](code-review.md) | Record review findings and their evidence. |
+| [Harness setup overview](harness-readme.md) | Summarize installed starter-pack assets and give a project-specific configuration checklist and workflow examples. The installer generates `HARNESS-README.md` at the target repository root. |
 
 ## Stack-specific templates
 

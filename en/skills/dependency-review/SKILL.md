@@ -1,6 +1,9 @@
 ---
 name: dependency-review
 description: Review project dependencies for inventory, license evidence, maintenance, known vulnerabilities, update opportunities, and documented risk. Use for dependency changes or the project's scheduled dependency review; this skill does not schedule itself.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Dependency review

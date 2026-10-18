@@ -35,6 +35,41 @@ The corresponding starter assets are [specification](en/docs/templates/spec.md),
 
 These sources describe possible patterns; the local [workflow agreement](en/docs/agreements/workflow.md) is deliberately more conservative: subagents are used only when the developer asks, and worktrees/parallelism are not assumed.
 
+## Java and Spring Boot
+
+- [Spring Boot testing](https://docs.spring.io/spring-boot/reference/testing/) — documents starter test support, JUnit Jupiter, AssertJ, and focused test modules.
+- [Structuring your code](https://docs.spring.io/spring-boot/reference/using/structuring-your-code.html) — package placement and application entry point guidance.
+- [Externalized configuration](https://docs.spring.io/spring-boot/reference/features/external-config.html) and [Actuator](https://docs.spring.io/spring-boot/reference/actuator/index.html) — configuration and operations capabilities; exposure and secret handling remain deployment decisions.
+- [Spring Modulith](https://docs.spring.io/spring-modulith/reference/) — optional module-oriented support for applications that benefit from explicit domain module boundaries.
+- [Checkstyle](https://checkstyle.org/) and [Testcontainers for Java](https://java.testcontainers.org/) — candidate style and integration-testing tools; verify project compatibility and need.
+
+The [Spring Boot profile](en/stacks/spring-boot/README.md) suggests JUnit/Spring tests, project-selected formatting and static checks, and optional container-backed integration tests without requiring a fixed architecture or Maven/Gradle choice.
+
+## Node.js and Express
+
+- [Express production security](https://expressjs.com/en/advanced/best-practice-security/) — input validation, TLS, Helmet, secure cookies, rate limiting, and dependency review considerations.
+- [Express performance and reliability](https://expressjs.com/en/advanced/best-practice-performance/) and [Node.js event-loop guidance](https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop) — reliability practices and the impact of blocking event-loop work.
+- [Node.js test runner](https://nodejs.org/api/test.html), [ESLint](https://eslint.org/docs/latest/use/getting-started), [typescript-eslint](https://typescript-eslint.io/getting-started/), [Vitest](https://vitest.dev/guide/), and [Supertest](https://github.com/ladjs/supertest) — candidate test and lint tools to evaluate against runtime and package setup.
+
+The [Node.js + Express profile](en/stacks/node-express/README.md) separates unit and HTTP behavior checks and calls out input validation, authorization, secure session configuration, dependency risk, and event-loop responsiveness.
+
+## Python and FastAPI
+
+- [Bigger applications](https://fastapi.tiangolo.com/tutorial/bigger-applications/) and [dependencies](https://fastapi.tiangolo.com/tutorial/dependencies/) — modular routers and reusable dependency declarations.
+- [FastAPI testing](https://fastapi.tiangolo.com/tutorial/testing/) — pytest and the HTTPX-backed `TestClient` approach.
+- [FastAPI security](https://fastapi.tiangolo.com/tutorial/security/) and [deployment concepts](https://fastapi.tiangolo.com/deployment/concepts/) — framework mechanisms and deployment choices to evaluate in context.
+- [Ruff](https://docs.astral.sh/ruff/) and [mypy](https://mypy.readthedocs.io/en/stable/) — candidate lint/format and static typing tools.
+
+The [Python + FastAPI profile](en/stacks/python-fastapi/README.md) treats FastAPI as the provided profile and Django REST Framework as a possible alternative needing separate project-specific guidance.
+
+## Angular
+
+- [Angular style guide](https://angular.dev/style-guide), [security best practices](https://angular.dev/best-practices/security), and [testing](https://angular.dev/guide/testing) — current official framework guidance. Testing defaults can vary by Angular CLI generation and existing workspace, so verify before changing a runner.
+- [angular-eslint](https://github.com/angular-eslint/angular-eslint) — community-maintained ESLint integration; match its support matrix to project versions.
+- [Playwright](https://playwright.dev/docs/intro) and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — candidate real-browser testing tool and normative accessibility standard.
+
+The [Angular profile](en/stacks/angular/README.md) emphasizes Angular's templates/sanitization, accessible interaction states, unit/component tests, linting, and real-browser verification for critical flows.
+
 ## .NET and ASP.NET Core
 
 - [Microsoft .NET architecture documentation](https://learn.microsoft.com/dotnet/architecture/) — catalog of architecture guides and reference material for .NET application types.

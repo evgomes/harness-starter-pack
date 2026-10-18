@@ -1,6 +1,9 @@
 ---
 name: threat-modeling
 description: Create or update a scoped, evidence-oriented threat model for a software change, then connect scenarios to mitigations and verification. Use when a change affects identity, sensitive data, trust boundaries, external integrations, uploads, privileged operations, or abuse-sensitive behavior.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Threat modeling

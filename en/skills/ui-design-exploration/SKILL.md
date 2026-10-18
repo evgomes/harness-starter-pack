@@ -1,6 +1,9 @@
 ---
 name: ui-design-exploration
 description: Explore and prototype a user interface when the engineer wants help choosing a design direction before writing an implementation spec. Research at least three design ideas, build a mocked-data prototype with the target app stack and reusable design-system components, and hand the accepted direction into the spec workflow.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # UI design exploration

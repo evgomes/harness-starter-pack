@@ -1,6 +1,9 @@
 ---
 name: security-review
 description: Threat-informed security review of a software change or design against project agreements and applicable OWASP guidance. Use alongside deterministic security tools; report concrete, evidence-backed risks without claiming certification.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Security review

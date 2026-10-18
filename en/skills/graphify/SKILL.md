@@ -1,6 +1,9 @@
 ---
 name: graphify
 description: Graph-first code discovery for this repository using a local Graphify AST index. Use for unfamiliar flows, architecture questions, callers, dependencies, the impact of changing a symbol, or the path between two symbols - anything that would otherwise mean reading whole files to find where something lives. Do not use for editing a file you already know, and never as the only evidence behind a code change.
+metadata:
+  version: "0.1.0"
+  created: "2026-10-16"
 ---
 
 # Graphify code navigation

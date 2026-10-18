@@ -1,14 +1,14 @@
 # Handoff: Starter pack installer
 
-> Updated: 2026-10-17 · Owner: Codex · Status: Follow-up profile and default-selection changes; verification pending
+> Updated: 2026-10-17 · Owner: Codex · Status: Developer onboarding and Graphify setup policy clarified
 
 ## Goal and active scope
 
 - Goal: Provide a cross-platform interactive installer for the English starter pack.
 - Spec / exploration: [starter-pack-installer spec](../specs/starter-pack-installer.md)
 - Branch (confirm repository naming/base-branch rules): `codex/starter-pack-installer`
-- Current slice: Follow-up to add an integrated ASP.NET Core + React profile and preselect Graphify skills.
-- Current subitem (do not advance until all items in current slice are complete): Review the profile, installer selection, and documentation; focused verification was not run for this follow-up.
+- Current slice: Clarify developer post-installation responsibilities and require Graphify CLI installation when `graphify-setup` is selected.
+- Current subitem (do not advance until all items in current slice are complete): Align setup skill and entry-point docs with the developer's requirement. Installation flow was previously verified on Windows.
 
 ## Decisions and constraints
 
@@ -17,8 +17,8 @@
 
 ## Progress and changed paths
 
-- Changed files/contracts: `scripts/install.py`, `scripts/README.md`, root and English READMEs, `en/stacks/README.md`, the new `en/stacks/aspnet-core-react/` profile, `docs/specs/starter-pack-installer.md`, and this handoff. Selecting the combined profile expands to the integrated profile plus both individual profiles. Earlier installer implementation also changed `scripts/tests/test_install.py` and `.gitignore`.
-- In progress: Follow-up combined profile, default-selection, and documentation changes; no checks have been run for this follow-up.
+- Changed files/contracts: installer stack map and generic bundle expansion, dynamic `HARNESS-README.md` generation, a reusable manual template, root/package/installer READMEs, stack and skills catalogs, stack profiles, and reference/spec/handoff docs. Earlier installer implementation also changed `scripts/tests/test_install.py` and `.gitignore`.
+- Completed follow-up: Generated overview and documentation update. Both requested installations completed without errors; unit tests and generated-link checks passed. Updated the onboarding checklist and made Graphify CLI installation a required outcome of the selected setup skill.
 - Next item in sequence: Review the follow-up diff and run focused installer tests if verification is requested.
 
 | Spec subitem | Status | Focused verification / evidence | Changed paths / note |
@@ -31,6 +31,9 @@
 | 2.3 | Complete | Back navigation, required destination path checks, retained selections, and review-before-apply covered by flow and tests. | `scripts/install.py`, tests |
 | Follow-up 2026-10-17 | Implemented; verification pending | No focused checks run for the changed defaults or documentation in this follow-up. | `scripts/install.py`, READMEs, spec, handoff |
 | Follow-up 2026-10-17 combined profile | Implemented; verification pending | No focused checks run for the new profile or installer choice. | `en/stacks/aspnet-core-react/`, `scripts/install.py`, READMEs, spec, handoff |
+| Follow-up 2026-10-17 stack catalog | Implemented; verification pending | No checks run. New individual profile folders, integrated bundle, installer selection, README catalogs, and source links need review/verification. | `en/stacks/spring-boot/`, `node-express/`, `python-fastapi/`, `angular/`, `spring-boot-angular/`, `scripts/install.py`, READMEs, `REFERENCES.md` |
+| Follow-up 2026-10-17 generated overview | Implemented; verified for selected stack/harness/skills | Installed Spring Boot + Angular into the supplied empty directory (62 files) and Python + FastAPI into the supplied example repository (52 files). Both generated READMEs listed correct profiles, Codex and Graphify skills; all their local links resolved. | `scripts/install.py`, `en/docs/templates/harness-readme.md`, installer docs, two destination folders |
+| Follow-up 2026-10-17 onboarding clarification | Documentation updated; review pending | `HARNESS-README` remains developer-facing. Repository README now enumerates post-install agreement, harness, stack-tool, Graphify CLI, and workflow setup steps. `graphify-setup` requires the CLI to be available on the developer machine. | Root/package/installer READMEs, `en/docs/templates/harness-readme.md`, `en/skills/graphify-setup/SKILL.md` |
 
 ## Verification evidence
 
@@ -39,18 +42,22 @@
 | Focused installer tests | `py -3 -m unittest discover -s scripts/tests -v` | Passed: 12 tests on Windows. | 2026-10-16 |
 | Whitespace validation | `git diff --check` | Passed; only Git line-ending conversion warnings were emitted. | 2026-10-16 |
 | macOS/Linux runtime | Not available in this environment | Not run; scripts use Python standard library and platform-neutral APIs with Windows VT handling. | 2026-10-16 |
+| Empty destination installation | `py -3 scripts/install.py --no-color` into `harness-starter-pack-empty-test`, existing-directory mode; Spring Boot + Angular, Codex, default Graphify skills | Passed: 62 files installed, 0 skipped, 0 issues; tailored `HARNESS-README.md` generated; local README links resolve. | 2026-10-17 |
+| Existing Python repository installation | `py -3 scripts/install.py --no-color` into `harness-starter-pack-non-empty-test`; Python + FastAPI, Codex, default Graphify skills | Passed: 52 files installed, 0 skipped, 0 issues; tailored `HARNESS-README.md` generated; existing README, Python sources, requirements, and `.env` remained present; local README links resolve. | 2026-10-17 |
+| Installer unit suite | `python -m unittest discover -s scripts/tests -v` | Passed: 12 tests. `py -3 -m unittest ...` could not locate a registered interpreter in this shell; rerunning with the available `python` executable succeeded. | 2026-10-17 |
+| Whitespace validation | `git diff --check` | Passed. | 2026-10-17 |
 
 ## Review and risks
 
 - Findings resolved: Fixed Windows Unicode output fallback and Windows console VT API declarations; corrected the test to assert Git initialization result rather than captured input prompt. Added back navigation, path validation, selection retention, and a review step that permits returning before writing.
 - Open findings / risks: Actual macOS/Linux console behavior has not been exercised on those operating systems.
 - Blockers / required input: None.
-- Spec amendments and decision references: A-01 records the 2026-10-17 default-selection decision; A-02 records the integrated ASP.NET Core + React profile. Both follow-ups still need focused verification.
+- Spec amendments and decision references: A-01 records the 2026-10-17 default-selection decision; A-02 records the integrated ASP.NET Core + React profile; A-03 records the additional technology profiles and Spring Boot + Angular bundle; A-04 records the personalized installation overview; A-05 records the required Graphify CLI setup outcome. The installation-specific follow-up is verified on Windows; the latest documentation clarification still needs review.
 - Final adversarial review status (one round at end): Complete; no blocking issues found.
 
 ## Next action
 
-1. Review the uncommitted follow-up diff and run focused installer verification if requested; then decide whether to commit and push it.
+1. Review the uncommitted follow-up diff; no installation errors were found. Do not commit unless requested.
 
 ## Resume checklist
 
