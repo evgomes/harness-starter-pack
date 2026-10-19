@@ -14,11 +14,11 @@ Os dados permanecem na máquina. Não exige API ou extração remota. O projeto 
 
 ## Requisitos
 
-- CLI Graphify no PATH. Instale pela skill graphify-setup e registre a versão em docs/agreements/dependencies.md.
+- CLI Graphify no PATH. Instale pela skill configuração do Graphify e registre a versão em docs/acordos/dependencias.md.
 - Runtime de atualização: PowerShell 7+ (pwsh) para refresh-graph.ps1; ou Python 3.9+ e Bash para refresh-graph.sh/refresh-graph.py. Bash é indicado para macOS/Linux; PowerShell funciona nos três sistemas.
 - graphify-out/ no .gitignore e .graphifyignore alinhado às exclusões do script.
 
-Se CLI, configuração ou script estiver ausente, pare e siga graphify-setup. Não instale ferramentas nem reescreva ignore files por esta skill.
+Se CLI, configuração ou script estiver ausente, pare e siga configuração do Graphify. Não instale ferramentas nem reescreva ignore files por esta skill.
 
 ## Mantenha o índice atualizado
 

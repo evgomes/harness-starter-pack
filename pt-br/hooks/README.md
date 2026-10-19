@@ -8,10 +8,10 @@ O pacote inclui uma verificação opcional de Graphify no início da sessão. In
 
 | Verificação | Uso sugerido | Motivo |
 |---|---|---|
-| Prontidão Graphify | Hook opcional de sessão para Claude Code/Cursor | Verificação rápida que encaminha para graphify-setup |
+| Prontidão Graphify | Hook opcional de sessão para Claude Code/Cursor | Verificação rápida que encaminha para configuração do Graphify |
 | Formatação/lint | Comandos e CI; opcionalmente após edição | Ferramentas e auto-fix dependem do projeto |
 | Testes | Workflow/CI; opcionalmente teste focado pós-edição | Suíte completa pode ser lenta |
-| Dependências/licenças | Skill dependency-review e CI agendada | Requer fonte de avisos e responsável |
+| Dependências/licenças | Skill revisão de dependências e CI agendada | Requer fonte de avisos e responsável |
 | Segurança/acessibilidade | Skills e scanners CI explícitos | Requer contexto e às vezes evidência humana |
 | Revisão shift-left | Skill/comando explícito | Custo variável; executar no ponto acordado |
 
@@ -26,7 +26,7 @@ Scripts equivalentes para PowerShell e Bash:
 
 Ambos emitem formato esperado pelo harness. Claude Code: escolha exemplo PowerShell/Bash em adapters/ e mescle em .claude/settings.json. Cursor: escolha exemplo e mescle em .cursor/hooks.json.
 
-O hook Bash chama refresh-graph.sh, que delega checagens/rebuild à biblioteca padrão Python 3. A instalação é opt-in e pode adicionar contexto de sessão. Hooks são somente leitura; use graphify-setup para configurar/reparar. Índice obsoleto é informado, não reconstruído automaticamente, pois o rebuild pode demorar e substituir graphify-out/.
+O hook Bash chama refresh-graph.sh, que delega checagens/rebuild à biblioteca padrão Python 3. A instalação é opt-in e pode adicionar contexto de sessão. Hooks são somente leitura; use configuração do Graphify para configurar/reparar. Índice obsoleto é informado, não reconstruído automaticamente, pois o rebuild pode demorar e substituir graphify-out/.
 
 Copie script para .agents/hooks/ e mescle o exemplo com configuração existente. Copie a skill Graphify completa com scripts de atualização para pasta de skills suportada. Hooks Claude Code podem ser versionados; hooks Cursor rodam em workspaces confiáveis, portanto revise o comando.
 
@@ -40,7 +40,7 @@ Codex/OpenCode não estão conectados a este script por padrão. Use skill e wor
 
 ## O que deve ficar em skill ou CI
 
-- Revisão de código por modelo: skill shift-left-code-review, modelo forte e evidências auditáveis; nunca após toda edição.
+- Revisão de código por modelo: skill revisão antecipada de código, modelo forte e evidências auditáveis; nunca após toda edição.
 - Workflows OWASP/WCAG precisam contexto e às vezes evidência manual.
 - Auditoria de dependências/licenças precisa dados externos e recorrência; use CI/agendamento e responsáveis.
 
@@ -48,7 +48,7 @@ Codex/OpenCode não estão conectados a este script por padrão. Use skill e wor
 
 Não instale/atualize ferramentas, auto-corrija código, faça push, publique dados ou acesse rede implicitamente. Não envie código/dados pessoais a serviços externos. Evite verificações pesadas em toda chamada. Hooks reportam; não substituem revisão, CI, threat modeling, pentest ou avaliação de acessibilidade. Documente evento, comando, runtime, timeout, efeito da falha e bypass.
 
-Use skill hook-authoring e docs/templates/hook-contract.md. O contrato é checklist, não esquema compartilhado: eventos, payloads, permissões, confiança, timeout e saída variam. Consulte documentação oficial, registre versão/data e valide sucesso, achado, ferramenta ausente, timeout e erro. Mescle configuração.
+Use skill autoria de hooks e docs/templates/contrato-de-hook.md. O contrato é checklist, não esquema compartilhado: eventos, payloads, permissões, confiança, timeout e saída variam. Consulte documentação oficial, registre versão/data e valide sucesso, achado, ferramenta ausente, timeout e erro. Mescle configuração.
 
 Escolha mecanismo proporcional: skill para tarefa contextual, hook para checagem determinística rápida e CI/agendamento para barreira autoritativa/recorrente. Consulte acordo de qualidade/segurança.
 

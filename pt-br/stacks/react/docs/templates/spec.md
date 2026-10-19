@@ -93,5 +93,5 @@ Antes de desviar do plano/acordos aceitos, registre motivo/impacto, obtenha deci
 ## Evidência de aceitação
 
 - Comportamento observável por cenário:
-- [Plano de verificação](verification-plan.md):
+- [Plano de verificação](plano-de-verificacao.md):
 - Decisões pendentes, premissas e responsáveis:

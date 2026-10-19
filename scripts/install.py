@@ -280,6 +280,7 @@ class PlannedFile:
     destination: Path
     label: str
     content: str | None = None
+    legacy_source: Path | None = None
 
 
 STACKS = {
@@ -349,6 +350,22 @@ SKILLS_PT = {
     "shift-left-code-review": "Revisão antecipada de código",
     "threat-modeling": "Modelagem de ameaças",
     "ui-design-exploration": "Exploração de design de interface",
+}
+
+# Keep the English keys as installer identifiers, while exposing localized
+# directory names in the Portuguese package and installed skill folders.
+SKILL_DIRECTORIES_PT = {
+    "accessibility-review": "revisao-de-acessibilidade",
+    "browser-visual-validation": "validacao-visual-no-navegador",
+    "dependency-review": "revisao-de-dependencias",
+    "feature-brainstorming": "exploracao-de-funcionalidades",
+    "graphify": "graphify",
+    "graphify-setup": "configuracao-do-graphify",
+    "hook-authoring": "autoria-de-hooks",
+    "security-review": "revisao-de-seguranca",
+    "shift-left-code-review": "revisao-antecipada-de-codigo",
+    "threat-modeling": "modelagem-de-ameacas",
+    "ui-design-exploration": "exploracao-de-design-de-interface",
 }
 
 DEFAULT_SKILLS = ["graphify", "graphify-setup"]
@@ -495,19 +512,38 @@ def add_directory(
     )
 
 
+def localized_skill_directory(skill: str, portuguese: bool) -> str:
+    return SKILL_DIRECTORIES_PT[skill] if portuguese else skill
+
+
+def add_skill_library(plan: list[PlannedFile], portuguese: bool, label: str) -> None:
+    for skill in SKILLS:
+        directory = localized_skill_directory(skill, portuguese)
+        plan.extend(
+            collect_files(
+                PACKAGE_ROOT / "skills" / directory,
+                Path("skills") / directory,
+                label,
+            )
+        )
+    readme = PACKAGE_ROOT / "skills" / "README.md"
+    plan.append(PlannedFile(readme, Path("skills/README.md"), label))
+
+
 def add_harness_skill(
-    plan: list[PlannedFile], skill: str, target_root: str, label: str
+    plan: list[PlannedFile], skill: str, target_root: str, label: str, portuguese: bool
 ) -> None:
+    directory = localized_skill_directory(skill, portuguese)
     entries = collect_files(
-        PACKAGE_ROOT / "skills" / skill,
-        Path(target_root) / skill,
+        PACKAGE_ROOT / "skills" / directory,
+        Path(target_root) / directory,
         label,
     )
     for item in entries:
         content = None
         if item.source is not None and item.source.suffix.lower() == ".md":
             content = item.source.read_text(encoding="utf-8")
-            for folder in ("docs", "hooks", "guides"):
+            for folder in ("docs", "hooks", "guias" if portuguese else "guides"):
                 content = content.replace(f"../../{folder}/", f"../../../{folder}/")
         plan.append(
             PlannedFile(
@@ -553,7 +589,8 @@ def render_harness_readme(
         "aspnet-core-react": "ASP.NET Core + React (mesmo repositório)",
         "spring-boot-angular": "Spring Boot + Angular (mesmo repositório)",
     } if portuguese else STACKS
-    template_path = PACKAGE_ROOT / "docs" / "templates" / "harness-readme.md"
+    template_name = "readme-do-harness.md" if portuguese else "harness-readme.md"
+    template_path = PACKAGE_ROOT / "docs" / "templates" / template_name
     template = template_path.read_text(encoding="utf-8")
 
     selected_stack_lines = [
@@ -570,13 +607,18 @@ def render_harness_readme(
         profile_root = PACKAGE_ROOT / "stacks" / stack
         supplemental = []
         for agreement in ("architecture", "conventions"):
-            source = profile_root / "docs" / "agreements" / f"{agreement}.md"
+            agreement_file = (
+                {"architecture": "arquitetura", "conventions": "convencoes"}.get(agreement, agreement)
+                if portuguese else agreement
+            )
+            agreement_directory = "acordos" if portuguese else "agreements"
+            source = profile_root / "docs" / agreement_directory / f"{agreement_file}.md"
             if source.is_file():
                 supplemental.append(
                 (
-                    f"[Prompts de {agreement}](stacks/{stack}/docs/agreements/{agreement}.md)"
+                    f"[Prompts de {agreement_file}](stacks/{stack}/docs/{agreement_directory}/{agreement_file}.md)"
                     if portuguese else
-                    f"[{agreement} prompts](stacks/{stack}/docs/agreements/{agreement}.md)"
+                    f"[{agreement} prompts](stacks/{stack}/docs/{agreement_directory}/{agreement_file}.md)"
                 )
                 )
         templates = profile_root / "docs" / "templates" / "README.md"
@@ -643,11 +685,12 @@ def render_harness_readme(
     if selected_skills:
         skill_lines = []
         for skill in selected_skills:
+            directory = localized_skill_directory(skill, portuguese)
             discovery_paths = []
             if any(harness in selected_harnesses for harness in ("codex", "cursor", "opencode")):
-                discovery_paths.append(f"`.agents/skills/{skill}/`")
+                discovery_paths.append(f"`.agents/skills/{directory}/`")
             if "claude-code" in selected_harnesses:
-                discovery_paths.append(f"`.claude/skills/{skill}/`")
+                discovery_paths.append(f"`.claude/skills/{directory}/`")
             activation = (
                 (("Disponível para descoberta em " if portuguese else "Discoverable in ")
                  + " e ".join(discovery_paths) + ".")
@@ -658,7 +701,8 @@ def render_harness_readme(
                     "Reference only; no compatible harness was selected for discovery."
                 )
             )
-            skill_lines.append(f"- [`{skill}`](skills/{skill}/SKILL.md) — {activation}")
+            skill_label = SKILLS_PT[skill] if portuguese else skill
+            skill_lines.append(f"- [{skill_label}](skills/{directory}/SKILL.md) — {activation}")
         skill_section = "\n".join(skill_lines)
     else:
         skill_section = (
@@ -676,7 +720,10 @@ def render_harness_readme(
             + (", ".join(HARNESSES[item] for item in HARNESSES if item in selected_harnesses)
                if selected_harnesses else ("nenhum selecionado" if portuguese else "none selected")),
             ("- **Fluxos de skills:** " if portuguese else "- **Skill workflows:** ")
-            + (", ".join(f"`{skill}`" for skill in selected_skills)
+            + (", ".join(
+                f"`{SKILLS_PT[skill] if portuguese else skill}`"
+                for skill in selected_skills
+            )
                if selected_skills else ("nenhuma selecionada" if portuguese else "none selected")),
             (
                 "- **Sempre copiados:** instruções raiz, cinco acordos, templates comuns, orientações/exemplos de hooks, guias gerais e biblioteca portátil de skills."
@@ -719,11 +766,13 @@ def build_plan(
         "harness-readme": "Visão geral da instalação e checklist de configuração"
         if portuguese else "Installation overview and setup checklist",
     }
-    add_directory(plan, "docs/agreements", "docs/agreements", labels["agreements"])
+    agreement_directory = "acordos" if portuguese else "agreements"
+    add_directory(plan, f"docs/{agreement_directory}", f"docs/{agreement_directory}", labels["agreements"])
     add_directory(plan, "docs/templates", "docs/templates", labels["templates"])
     add_directory(plan, "hooks", "hooks", labels["hooks"])
-    add_directory(plan, "guides", "guides", labels["guides"])
-    add_directory(plan, "skills", "skills", labels["skills"])
+    guide_directory = "guias" if portuguese else "guides"
+    add_directory(plan, guide_directory, guide_directory, labels["guides"])
+    add_skill_library(plan, portuguese, labels["skills"])
     plan.append(
         PlannedFile(
             PACKAGE_ROOT / "AGENTS.md",
@@ -747,8 +796,8 @@ def build_plan(
         skill_name = SKILLS_PT[skill] if portuguese else SKILLS[skill]
         add_directory(
             plan,
-            f"skills/{skill}",
-            f"skills/{skill}",
+            f"skills/{localized_skill_directory(skill, portuguese)}",
+            f"skills/{localized_skill_directory(skill, portuguese)}",
             f"Skill: {skill_name}" if portuguese else f"{skill_name} source",
         )
 
@@ -765,7 +814,7 @@ def build_plan(
                     content=(
                         ("# Instruções do projeto para Claude Code\n\n" if portuguese else "# Claude Code project instructions\n\n")
                         + ("Leia [AGENTS.md](AGENTS.md) e os arquivos relevantes em " if portuguese else "Read the root [AGENTS.md](AGENTS.md) and the relevant files in ")
-                        + "[docs/agreements](docs/agreements/README.md) "
+                        + f"[docs/{agreement_directory}](docs/{agreement_directory}/README.md) "
                         + ("como contrato compartilhado do projeto.\n\nAs notas específicas do harness estão em " if portuguese else "as the shared project contract.\n\nHarness-specific setup notes are in ")
                         + "[harnesses/claude-code/CLAUDE.md](harnesses/claude-code/CLAUDE.md). "
                         + ("As skills escolhidas ficam em .claude/skills/; o catálogo de referência fica em skills/.\n" if portuguese else "Selected Claude Code skills are installed under .claude/skills/; the portable reference catalog is under skills/.\n")
@@ -793,7 +842,7 @@ def build_plan(
     for skill in resolved_skills:
         for target_root, label in skill_targets:
             skill_name = SKILLS_PT[skill] if portuguese else SKILLS[skill]
-            add_harness_skill(plan, skill, target_root, f"{label}: {skill_name}")
+            add_harness_skill(plan, skill, target_root, f"{label}: {skill_name}", portuguese)
 
     plan.append(
         PlannedFile(
@@ -810,7 +859,67 @@ def build_plan(
         if previous and previous.source != item.source:
             raise ValueError(f"Two selected assets target the same file: {item.destination}")
         unique[item.destination] = item
+    if portuguese:
+        unique = {
+            destination: PlannedFile(
+                source=item.source,
+                destination=item.destination,
+                label=item.label,
+                content=item.content,
+                legacy_source=legacy_portuguese_path(destination),
+            )
+            for destination, item in unique.items()
+        }
     return list(unique.values()), resolved_skills
+
+
+PORTUGUESE_LEGACY_FILENAMES = {
+    "arquitetura.md": "architecture.md",
+    "convencoes.md": "conventions.md",
+    "dependencias.md": "dependencies.md",
+    "qualidade-e-seguranca.md": "quality-and-security.md",
+    "revisao-de-codigo.md": "code-review.md",
+    "exploracao-de-funcionalidade.md": "feature-exploration.md",
+    "readme-do-harness.md": "harness-readme.md",
+    "contrato-de-hook.md": "hook-contract.md",
+    "excecao-de-risco.md": "risk-exception.md",
+    "modelo-de-ameacas.md": "threat-model.md",
+    "exploracao-de-design-de-interface.md": "ui-design-exploration.md",
+    "plano-de-verificacao.md": "verification-plan.md",
+    "prompts-modelo-de-ameacas.md": "threat-model-prompts.md",
+    "entrada-guia-de-estilo-de-componentes.md": "component-styleguide-entry.md",
+    "exploracao-de-design.md": "design-exploration.md",
+    "testes-de-navegador.md": "browser-testing.md",
+}
+
+PORTUGUESE_LEGACY_DIRECTORIES = {
+    **{
+        localized: english
+        for english, localized in SKILL_DIRECTORIES_PT.items()
+        if english != localized
+    },
+    "guias": "guides",
+}
+
+
+def legacy_portuguese_path(destination: Path) -> Path | None:
+    """Return the prior English-named destination for a localized Portuguese asset."""
+    parts = list(destination.parts)
+    renamed_directory = False
+    for index, part in enumerate(parts):
+        old_directory = PORTUGUESE_LEGACY_DIRECTORIES.get(part)
+        if old_directory is not None:
+            parts[index] = old_directory
+            renamed_directory = True
+    agreement_path = len(parts) >= 3 and parts[-2] == "acordos" and parts[-3] == "docs"
+    if agreement_path:
+        parts[-2] = "agreements"
+    old_name = PORTUGUESE_LEGACY_FILENAMES.get(parts[-1])
+    if old_name is None and not agreement_path and not renamed_directory:
+        return None
+    if old_name is not None:
+        parts[-1] = old_name
+    return Path(*parts)
 
 
 def safe_destination(target_root: Path, relative_path: Path) -> Path:
@@ -840,12 +949,20 @@ def show_plan(console: Console, target: Path, files: list[tuple[PlannedFile, Pat
         if item.label != previous_label:
             print(console.paint(f"  {item.label}", console.BOLD))
             previous_label = item.label
+        legacy = target / item.legacy_source if item.legacy_source is not None else None
         state = (
             ("perguntará sobre substituição" if portuguese else "replace prompt")
             if destination.exists() or destination.is_symlink()
+            else ("migração disponível" if portuguese else "migration available")
+            if legacy is not None and legacy.is_file() and not legacy.is_symlink()
             else ("novo" if portuguese else "new")
         )
-        color = console.YELLOW if state == "replace prompt" else console.GREEN
+        color = console.YELLOW if state in {
+            "replace prompt",
+            "perguntará sobre substituição",
+            "migração disponível",
+            "migration available",
+        } else console.GREEN
         print(f"      {console.paint(state, color)}  {item.destination.as_posix()}")
     console.rule()
 
@@ -886,13 +1003,29 @@ def apply_plan(
             )
             decisions[destination] = replace
 
+    migrations: dict[Path, Path] = {}
+    for item, destination in files:
+        if item.legacy_source is None or destination.exists() or destination.is_symlink():
+            continue
+        old_path = safe_destination(target, item.legacy_source)
+        if old_path.is_file() and not old_path.is_symlink():
+            if ask_yes_no(
+                console,
+                f"Mover {item.legacy_source.as_posix()} para {item.destination.as_posix()} e guardar backup?"
+                if PACKAGE_ROOT == PORTUGUESE_ROOT else
+                f"Move legacy file {item.legacy_source.as_posix()} to {item.destination.as_posix()} and keep a backup?",
+                default=False,
+            ):
+                migrations[destination] = old_path
+
     accepted = [
         (item, destination)
         for item, destination in files
-        if not (destination.exists() or destination.is_symlink()) or decisions.get(destination, False)
+        if destination not in migrations
+        and (not (destination.exists() or destination.is_symlink()) or decisions.get(destination, False))
     ]
-    skipped = len(files) - len(accepted)
-    backup_root = backup_path(target) if any(decisions.values()) else None
+    skipped = len(files) - len(accepted) - len(migrations)
+    backup_root = backup_path(target) if any(decisions.values()) or migrations else None
     installed = 0
     failures: list[str] = []
     backups: list[Path] = []
@@ -904,6 +1037,27 @@ def apply_plan(
             safe_destination(target, backup_relative)
             backup_root.mkdir(parents=True, exist_ok=False)
             safe_destination(target, backup_relative)
+        for destination, old_path in migrations.items():
+            try:
+                item = next(item for item, planned_destination in files if planned_destination == destination)
+                safe_destination(target, item.legacy_source or Path())
+                safe_destination(target, item.destination)
+                assert backup_root is not None and item.legacy_source is not None
+                backup = backup_root / item.legacy_source
+                backup.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(old_path, backup)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(old_path, destination)
+                backups.append(backup)
+                installed += 1
+                print(f"  {console.paint('✓' if console.unicode else '[+]', console.GREEN)}  {item.destination.as_posix()}")
+            except (OSError, ValueError) as error:
+                failures.append(f"{item.destination.as_posix()}: {error}")
+                console.error(
+                    f"Não foi possível migrar {item.legacy_source.as_posix()}: {error}"
+                    if PACKAGE_ROOT == PORTUGUESE_ROOT else
+                    f"Could not migrate {item.legacy_source.as_posix()}: {error}"
+                )
         for item, destination in accepted:
             try:
                 safe_destination(target, item.destination)
@@ -1202,7 +1356,7 @@ def main(argv: list[str] | None = None) -> int:
         if is_new and not initialized_git:
             console.note("Para inicializar o Git depois, execute: git init" if PACKAGE_ROOT == PORTUGUESE_ROOT else "To initialize Git later, run: git init")
         console.note(
-            "Próximo passo: revise AGENTS.md e adapte docs/agreements/ ao projeto."
+            "Próximo passo: revise AGENTS.md e adapte docs/acordos/ ao projeto."
             if PACKAGE_ROOT == PORTUGUESE_ROOT
             else "Next: review AGENTS.md and tailor docs/agreements/ to this project."
         )

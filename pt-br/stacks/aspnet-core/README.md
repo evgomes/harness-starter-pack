@@ -4,13 +4,13 @@ Orientações de backend para projetos ASP.NET Core. São ponto de partida, não
 
 ## Uso com outros perfis
 
-Escolha para backend ASP.NET Core. Se o mesmo repositório também tiver frontend React e precisar de orientação integrada de arquitetura, convenções e spec, escolha ASP.NET Core + React. Mantenha contratos API/interface e decisões compartilhadas em docs/agreements/architecture.md.
+Escolha para backend ASP.NET Core. Se o mesmo repositório também tiver frontend React e precisar de orientação integrada de arquitetura, convenções e spec, escolha ASP.NET Core + React. Mantenha contratos API/interface e decisões compartilhadas em docs/acordos/arquitetura.md.
 
 ## Arquitetura e convenções
 
-- [Perfil de arquitetura](docs/agreements/architecture.md)
-- [Perfil de convenções](docs/agreements/conventions.md)
-- Mantenha atualizado o [acordo de dependências](../../docs/agreements/dependencies.md).
+- [Perfil de arquitetura](docs/acordos/arquitetura.md)
+- [Perfil de convenções](docs/acordos/convencoes.md)
+- Mantenha atualizado o [acordo de dependências](../../docs/acordos/dependencias.md).
 - Use [templates da stack](docs/templates/README.md) para specs de API/domínio, plano de verificação e prompts de ameaças.
 
 ## Verificações candidatas

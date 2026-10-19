@@ -1,6 +1,6 @@
 # Adaptador de projeto Claude Code
 
-No início de cada tarefa, leia AGENTS.md da raiz e os arquivos relevantes de docs/agreements/ como contrato compartilhado de engenharia. Mantenha este arquivo como ponto de entrada curto para Claude Code; não duplique os acordos completos.
+No início de cada tarefa, leia AGENTS.md da raiz e os arquivos relevantes de docs/acordos/ como contrato compartilhado de engenharia. Mantenha este arquivo como ponto de entrada curto para Claude Code; não duplique os acordos completos.
 
 Ao instalar o starter pack, copie skills escolhidas para .claude/skills/<nome-da-skill>/ e preserve referências, assets e scripts. Leia uma skill somente quando a tarefa corresponder à descrição. Configure hooks apenas para verificações determinísticas e com falha clara; revisão por IA deve permanecer como fluxo explícito.
 

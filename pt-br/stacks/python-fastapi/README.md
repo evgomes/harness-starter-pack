@@ -23,7 +23,7 @@ FastAPI é o perfil existente. Django REST Framework pode servir quando ORM/admi
 
 ## Templates e referências
 
-Veja [templates](docs/templates/README.md) para spec API/verificação e o [modelo comum de ameaças](../../docs/templates/threat-model.md).
+Veja [templates](docs/templates/README.md) para spec API/verificação e o [modelo comum de ameaças](../../docs/templates/modelo-de-ameacas.md).
 
 - [Aplicações maiores FastAPI](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
 - [Dependências FastAPI](https://fastapi.tiangolo.com/tutorial/dependencies/)

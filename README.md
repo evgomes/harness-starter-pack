@@ -4,6 +4,7 @@ A collection of reusable instructions, skills, templates, and checks for AI-assi
 
 ## Packages
 
+- [Leia este README em português (Brasil)](README.pt-br.md)
 - [English starter pack](en/README.md)
 - [Português (Brasil)](pt-br/README.md)
 
@@ -23,7 +24,7 @@ On macOS or Linux, run `python3 scripts/install.py`; on Windows without the `py`
 
 ### Use the pack
 
-Choose the language in the installer, then select common guidance, the adapter for your harness, and applicable stack profiles from that language package (`en/` or `pt-br/`). Copy all five common agreements to the target project's `docs/agreements/`; fill the architecture, dependency, conventions, and quality/security agreements with verified project decisions, and adapt the reusable workflow agreement only for documented project-specific needs. Select additional templates and skills as needed. Merge instructions with existing project files instead of overwriting established rules. Do not copy project agreement prompts unchanged as if they described a repository that has not been inspected.
+Choose the language in the installer, then select common guidance, the adapter for your harness, and applicable stack profiles from that language package (`en/` or `pt-br/`). The English package installs agreements under `docs/agreements/`; Brazilian Portuguese installs them under `docs/acordos/` with localized filenames. Fill the architecture, dependency, conventions, and quality/security agreements with verified project decisions, and adapt the reusable workflow agreement only for documented project-specific needs. Select additional templates and skills as needed. Merge instructions with existing project files instead of overwriting established rules. Do not copy project agreement prompts unchanged as if they described a repository that has not been inspected.
 
 The pack is also designed to be referenced directly by an agent. Start with `AGENTS.md` in the chosen language package and load task-specific skills only when they apply.
 

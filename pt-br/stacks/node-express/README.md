@@ -24,7 +24,7 @@ Ferramentas são opcionais: confira scripts e compatibilidade antes de adotar co
 
 ## Templates e referências
 
-Veja [templates](docs/templates/README.md) para specs de API/verificação e o [modelo comum de ameaças](../../docs/templates/threat-model.md).
+Veja [templates](docs/templates/README.md) para specs de API/verificação e o [modelo comum de ameaças](../../docs/templates/modelo-de-ameacas.md).
 
 - [Segurança em produção Express](https://expressjs.com/en/advanced/best-practice-security/)
 - [Desempenho/confiabilidade Express](https://expressjs.com/en/advanced/best-practice-performance/)

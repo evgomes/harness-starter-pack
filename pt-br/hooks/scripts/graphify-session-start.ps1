@@ -27,7 +27,7 @@ $gitCommand = Get-Command git -ErrorAction SilentlyContinue
 if (-not $gitCommand) {
     if ((Test-Path -LiteralPath (Join-Path (Get-Location) '.graphifyignore') -PathType Leaf) -or
         (Test-Path -LiteralPath (Join-Path (Get-Location) 'graphify-out') -PathType Container)) {
-        Write-HookContext 'Verificação de prontidão do Graphify ignorada: Git não está disponível. Instale o Git e use a skill graphify-setup para verificar este projeto.'
+        Write-HookContext 'Verificação de prontidão do Graphify ignorada: Git não está disponível. Instale o Git e use a skill configuração do Graphify para verificar este projeto.'
     }
     exit 0
 }
@@ -49,7 +49,7 @@ $refreshScript = $refreshCandidates | Where-Object { Test-Path -LiteralPath $_ -
 $refreshScriptFound = -not [string]::IsNullOrWhiteSpace([string] $refreshScript)
 $ignorePath = Join-Path $repoRoot '.graphifyignore'
 $graphDirectory = Join-Path $repoRoot 'graphify-out'
-$dependenciesPath = Join-Path $repoRoot 'docs/agreements/dependencies.md'
+$dependenciesPath = Join-Path $repoRoot 'docs/acordos/dependencias.md'
 
 # Only report when the repository signals that Graphify is intended. This keeps an optional
 # hook silent in repositories that do not use Graphify.
@@ -71,7 +71,7 @@ if ($LASTEXITCODE -ne 0) {
 
 if ($issues.Count -gt 0) {
     $issueText = $issues -join '; '
-    Write-HookContext "A configuração do Graphify está incompleta: $issueText. Use a skill graphify-setup para revisar e corrigir. Este hook não alterou nada."
+    Write-HookContext "A configuração do Graphify está incompleta: $issueText. Use a skill configuração do Graphify para revisar e corrigir. Este hook não alterou nada."
     exit 0
 }
 

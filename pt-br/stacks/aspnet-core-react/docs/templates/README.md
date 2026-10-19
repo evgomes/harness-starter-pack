@@ -5,4 +5,4 @@ Planeje mudanças que cruzem backend/API e frontend/interface. Copie para docs/ 
 | Template | Uso |
 |---|---|
 | [Spec full stack](spec.md) | Definir comportamento, contratos API/interface, slices e evidências entre camadas. |
-| [Plano de verificação full stack](verification-plan.md) | Coordenar verificações de servidor, frontend, contrato e ponta a ponta. |
+| [Plano de verificação full stack](plano-de-verificacao.md) | Coordenar verificações de servidor, frontend, contrato e ponta a ponta. |

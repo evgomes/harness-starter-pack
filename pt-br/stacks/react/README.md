@@ -4,7 +4,7 @@ Orientações de frontend para projetos React. Recomendações são ponto de par
 
 ## Uso com outros perfis
 
-Escolha para app/interface React. Se o mesmo repositório contém backend ASP.NET Core e requer orientação integrada de arquitetura, convenções e spec, use ASP.NET Core + React. Mantenha contratos API/interface, autenticação e decisões entre stacks em docs/agreements/architecture.md.
+Escolha para app/interface React. Se o mesmo repositório contém backend ASP.NET Core e requer orientação integrada de arquitetura, convenções e spec, use ASP.NET Core + React. Mantenha contratos API/interface, autenticação e decisões entre stacks em docs/acordos/arquitetura.md.
 
 ## Arquitetura e convenções
 
@@ -14,8 +14,8 @@ Escolha para app/interface React. Se o mesmo repositório contém backend ASP.NE
 - Use HTML semântico e nomes acessíveis; preserve teclado, foco visível, mensagens compreensíveis e reflow responsivo.
 - Registre versão React, renderização, roteamento, estado, client API e estratégia de testes no acordo de arquitetura.
 - Use [templates da stack](docs/templates/README.md) para specs de interface, verificação e ameaças no cliente/browser.
-- Use [ui-design-exploration](../../skills/ui-design-exploration/SKILL.md) e [templates de design](docs/templates/design-exploration.md) ao comparar direções antes da spec. Prototipe dados simulados com stack e componentes existentes.
-- Para mudanças visíveis, use [browser-visual-validation](../../skills/browser-visual-validation/SKILL.md) e prefira Chrome oficial quando disponível. O [guia de navegador](../../guides/browser-testing.md) explica configurações e como relatar limitações.
+- Use [exploração de design de interface](../../skills/exploracao-de-design-de-interface/SKILL.md) e [templates de design](docs/templates/exploracao-de-design.md) ao comparar direções antes da spec. Prototipe dados simulados com stack e componentes existentes.
+- Para mudanças visíveis, use [validação visual no navegador](../../skills/validacao-visual-no-navegador/SKILL.md) e prefira Chrome oficial quando disponível. O [guia de navegador](../../guias/testes-de-navegador.md) explica configurações e como relatar limitações.
 
 ## Verificações candidatas
 
@@ -30,4 +30,4 @@ Derive comandos dos scripts e lockfile do projeto. Não presuma gerenciador nem 
 | Acessibilidade | Automação e verificações adequadas de teclado, foco, zoom/reflow e AT |
 | Segurança | Limites cliente/servidor, exposição de dados, dependências e análise estática configurada |
 
-Registre verificações e evidências no [acordo de qualidade/segurança](../../docs/agreements/quality-and-security.md); use [plano de verificação](../../docs/templates/verification-plan.md) para risco elevado ou entre camadas.
+Registre verificações e evidências no [acordo de qualidade/segurança](../../docs/acordos/qualidade-e-seguranca.md); use [plano de verificação](../../docs/templates/plano-de-verificacao.md) para risco elevado ou entre camadas.

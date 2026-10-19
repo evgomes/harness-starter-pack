@@ -20,7 +20,7 @@ emit_context() {
 
 if ! command -v git >/dev/null 2>&1; then
   if [[ -f .graphifyignore || -d graphify-out ]]; then
-    emit_context 'Verificação de prontidão do Graphify ignorada: Git não está disponível. Instale o Git e use a skill graphify-setup para verificar este projeto.'
+    emit_context 'Verificação de prontidão do Graphify ignorada: Git não está disponível. Instale o Git e use a skill configuração do Graphify para verificar este projeto.'
   fi
   exit 0
 fi
@@ -44,8 +44,8 @@ done
 
 graphify_declared=false
 [[ -f "$repo_root/.graphifyignore" || -d "$repo_root/graphify-out" || -n "$refresh_script" ]] && graphify_declared=true
-if [[ -f "$repo_root/docs/agreements/dependencies.md" ]] &&
-  grep -Eiq 'Graphify|graphifyy' "$repo_root/docs/agreements/dependencies.md"; then
+if [[ -f "$repo_root/docs/acordos/dependencias.md" ]] &&
+  grep -Eiq 'Graphify|graphifyy' "$repo_root/docs/acordos/dependencias.md"; then
   graphify_declared=true
 fi
 [[ "$graphify_declared" == true ]] || exit 0
@@ -60,7 +60,7 @@ fi
 
 if (( ${#issues[@]} > 0 )); then
   joined="$(IFS='; '; printf '%s' "${issues[*]}")"
-  emit_context "A configuração do Graphify está incompleta: ${joined}. Use a skill graphify-setup para revisar e corrigir. Este hook não alterou nada."
+  emit_context "A configuração do Graphify está incompleta: ${joined}. Use a skill configuração do Graphify para revisar e corrigir. Este hook não alterou nada."
   exit 0
 fi
 

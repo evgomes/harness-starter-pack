@@ -6,15 +6,15 @@ O instalador coloca este perfil em stacks/aspnet-core-react/. Escolha-o em vez d
 
 ## Acordos
 
-- [Prompts integrados de arquitetura](docs/agreements/architecture.md): contratos API/interface, limites de confiança, dados e implantação.
-- [Convenções integradas](docs/agreements/conventions.md): mudanças entre backend e frontend.
-- Mantenha autoritativos os acordos compartilhados de [arquitetura](../../docs/agreements/architecture.md), [convenções](../../docs/agreements/conventions.md), [dependências](../../docs/agreements/dependencies.md) e [qualidade/segurança](../../docs/agreements/quality-and-security.md).
+- [Prompts integrados de arquitetura](docs/acordos/arquitetura.md): contratos API/interface, limites de confiança, dados e implantação.
+- [Convenções integradas](docs/acordos/convencoes.md): mudanças entre backend e frontend.
+- Mantenha autoritativos os acordos compartilhados de [arquitetura](../../docs/acordos/arquitetura.md), [convenções](../../docs/acordos/convencoes.md), [dependências](../../docs/acordos/dependencias.md) e [qualidade/segurança](../../docs/acordos/qualidade-e-seguranca.md).
 
 ## Templates
 
 - [Spec full stack](docs/templates/spec.md) para mudanças visíveis que cruzam API/interface.
-- [Plano de verificação full stack](docs/templates/verification-plan.md) para evidências backend, frontend, contrato e ponta a ponta.
-- Use templates comuns de [spec](../../docs/templates/spec.md), [verificação](../../docs/templates/verification-plan.md) e [ameaças](../../docs/templates/threat-model.md) quando forem mais adequados.
+- [Plano de verificação full stack](docs/templates/plano-de-verificacao.md) para evidências backend, frontend, contrato e ponta a ponta.
+- Use templates comuns de [spec](../../docs/templates/spec.md), [verificação](../../docs/templates/plano-de-verificacao.md) e [ameaças](../../docs/templates/modelo-de-ameacas.md) quando forem mais adequados.
 
 ## Verificações candidatas
 

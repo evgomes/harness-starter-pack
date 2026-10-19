@@ -16,10 +16,10 @@ Combine opções dos dois perfis: JUnit/Spring Test e política Checkstyle/forma
 
 ## Templates
 
-- [Prompts integrados de arquitetura](docs/agreements/architecture.md)
-- [Convenções entre stacks](docs/agreements/conventions.md)
+- [Prompts integrados de arquitetura](docs/acordos/arquitetura.md)
+- [Convenções entre stacks](docs/acordos/convencoes.md)
 - [Spec full stack](docs/templates/spec.md)
-- [Plano de verificação full stack](docs/templates/verification-plan.md)
+- [Plano de verificação full stack](docs/templates/plano-de-verificacao.md)
 - [Perfis individuais](../spring-boot/README.md) e [Angular](../angular/README.md)
 
 Veja fontes oficiais nos perfis individuais e [WCAG 2.2](https://www.w3.org/TR/WCAG22/).

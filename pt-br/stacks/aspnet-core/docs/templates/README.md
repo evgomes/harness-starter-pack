@@ -5,5 +5,5 @@ Use estes templates junto ao [catálogo comum](../../../../docs/templates/README
 | Template | Uso |
 |---|---|
 | [Spec de funcionalidade](spec.md) | Registrar contratos de API, domínio, persistência e operação. |
-| [Plano de verificação](verification-plan.md) | Planejar evidências de build/testes .NET, persistência, API, segurança e migração. |
-| [Prompts de modelo de ameaças](threat-model-prompts.md) | Acrescentar limites e perguntas específicos ASP.NET Core ao modelo comum. |
+| [Plano de verificação](plano-de-verificacao.md) | Planejar evidências de build/testes .NET, persistência, API, segurança e migração. |
+| [Prompts de modelo de ameaças](prompts-modelo-de-ameacas.md) | Acrescentar limites e perguntas específicos ASP.NET Core ao modelo comum. |

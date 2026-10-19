@@ -24,7 +24,7 @@ São opções, não stack obrigatória. Derive comandos dos wrappers Maven/Gradl
 
 ## Templates e referências
 
-Veja [templates](docs/templates/README.md) para spec Java/Spring e plano de verificação. Use [modelo de ameaças](../../docs/templates/threat-model.md) e [plano comum](../../docs/templates/verification-plan.md) quando melhor.
+Veja [templates](docs/templates/README.md) para spec Java/Spring e plano de verificação. Use [modelo de ameaças](../../docs/templates/modelo-de-ameacas.md) e [plano comum](../../docs/templates/plano-de-verificacao.md) quando melhor.
 
 - [Testes Spring Boot](https://docs.spring.io/spring-boot/reference/testing/)
 - [Estruturação de código](https://docs.spring.io/spring-boot/reference/using/structuring-your-code.html)

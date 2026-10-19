@@ -3,6 +3,6 @@ description: Workflow de engenharia e acordos compartilhados do projeto
 alwaysApply: true
 ---
 
-Leia AGENTS.md da raiz para instruções compartilhadas e consulte somente arquivos relevantes em docs/agreements/. Decisões do projeto têm precedência sobre orientação genérica do pacote.
+Leia AGENTS.md da raiz para instruções compartilhadas e consulte somente arquivos relevantes em docs/acordos/. Decisões do projeto têm precedência sobre orientação genérica do pacote.
 
-Use a skill opcional feature-brainstorming somente quando problema, restrições ou alternativas precisarem de esclarecimento. Caso contrário, vá diretamente para spec ou contrato de tarefa proporcional. Carregue outras skills sob demanda. Confira conclusões no código e testes; não invente achados.
+Use a skill opcional exploração de funcionalidades somente quando problema, restrições ou alternativas precisarem de esclarecimento. Caso contrário, vá diretamente para spec ou contrato de tarefa proporcional. Carregue outras skills sob demanda. Confira conclusões no código e testes; não invente achados.

@@ -25,7 +25,7 @@ São recomendações, não dependências instaladas nem políticas obrigatórias
 
 ## Templates
 
-Veja o [índice de templates](docs/templates/README.md), [exploração de interface](../../docs/templates/ui-design-exploration.md), [verificação](../../docs/templates/verification-plan.md) e skill de acessibilidade.
+Veja o [índice de templates](docs/templates/README.md), [exploração de interface](../../docs/templates/exploracao-de-design-de-interface.md), [verificação](../../docs/templates/plano-de-verificacao.md) e skill de acessibilidade.
 
 ## Referências
 
